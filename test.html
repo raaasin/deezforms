@@ -14,9 +14,12 @@
         document.getElementById('getAPI').addEventListener('click', () => {
             // Define the JSON data
             const jsonData = {
-                'name': "", 'email':""
+                'your name': "",
+                'why you want this job': "",
+                "are you married":"",
+                "checks over stripes":""
             };
-
+    
             fetch('https://6383-2401-4900-1cb4-c5f-ad4d-a09c-82c8-f496.ngrok-free.app/api/custom', {
                 method: 'POST',
                 headers: {
@@ -26,12 +29,18 @@
             })
             .then(response => response.json())
             .then(data => {
-                document.getElementById('result').innerText = 'API returned: ' + data.label1;
+                // Iterate through the keys in the response and display them
+                let resultText = 'API returned:\n';
+                for (let key in data) {
+                    resultText += `${key}: ${data[key]}\n`;
+                }
+                document.getElementById('result').innerText = resultText;
             })
             .catch(error => {
                 document.getElementById('result').innerText = 'Error: ' + error;
             });
         });
     </script>
-</body>
+    </body>
+    
 </html>

@@ -9,11 +9,12 @@ def custom():
     data = request.get_json()  # Retrieve JSON data from the request body
     if data is None:
         return jsonify(error='No JSON data provided'), 400
-
+    print(data)
     response = {}
 
     for key in data:
-        label = data[key]  # Get the key from the JSON data
+        print(key)
+        label = key  # Get the key from the JSON data
         output = pipe.run(
             query=label, params={"Retriever": {"top_k": 10}, "Reader": {"top_k": 5}}
         )
@@ -21,7 +22,7 @@ def custom():
         answer = out
 
         response[key] = answer  # Store the answer for the key in the response
-
+    print(response)
     return jsonify(response)
 
 if __name__ == '__main__':
