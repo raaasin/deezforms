@@ -4,6 +4,9 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
+@app.route('/', methods=['GET'])
+def index():
+    return jsonify({'message': 'Check the URL, also try POST method to /api/custom with a JSON body'})
 @app.route('/api/custom', methods=['POST'])
 def custom():
     data = request.get_json()  # Retrieve JSON data from the request body

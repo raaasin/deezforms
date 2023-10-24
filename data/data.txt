@@ -1,10 +1,13 @@
-His Name is "Lokeshwar Lakhineni"
-His email is "fasonuisgay@gmail.com"
-Lokesh is The Associate Secretary @OWASP-VIIT Student Chapter. Lokesh is an aspiring data scientist with a strong passion for uncovering insights and solving complex problems through data analysis. Currently, Lokesh is focusing on Deep Learning. Lokesh is experienced in Python and is familiar with various data visualization tools. Lokesh is always eager to learn and stay up-to-date with the latest industry developments. Lokesh is looking to connect with like-minded individuals and gain valuable industry experience.
-Lokesh is very much interested in working in the Data Science community. Lokesh is looking forward to it.
-Lokesh has good knowledge in Python, C, C++ Programming Languages.
-Lokesh has also built projects based on the Django Framework.
-Lokesh believes that networking is the key to evolution. That's why Lokesh loves working in the community.
-Lokesh also loves to design and has worked on designing presentations, ID cards for clubs, and web pages.
+Name is "Farhaan Ali"
+email or gmail is "farhaan765ali@gmail.com
+LinkedIn link is "linkedin.com/in/farhaan-ali-ba1a14255"
+Student at "Vignan's Institute of Information Technology"
+Department or Branch is "CSE-25"
 
-Lokesh appreciates you looking at Lokesh's profile. Send Lokesh a message if you want Lokesh to work with you on projects involving deep learning or machine learning.
+Projects done are:
+"rock-paper-scissors"
+
+Skills are "SQL","MySQL","Java","Javascript","CSS","HTML","C","C++".
+I am talented because I have certificates in "SQL" from "HackerRank", "CSS" from "Infosys","JavaScript" from Infosys, "Java" from "Sololearn".
+Phone number is "9440316622".
+Married to Kanye West
