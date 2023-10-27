@@ -1,5 +1,3 @@
-
-import os
 from supabase import create_client, Client
 from cred import supurl, supkey
 
@@ -12,4 +10,7 @@ def insert_main(data):
     table = "main"
     supabase.table(table).insert(data).execute()
     #{"emailid":"nisarvskp@gmail.com","linkedin":"bruh.com","github":"susu.com"}
-    
+def edit_data_main(data):
+    table="main"
+    mail=data.get("emailid")
+    supabase.table(table).update({"linkedin":data.get("linkedin"),"github":data.get("github")}).match({"emailid":mail}).execute()
