@@ -5,17 +5,32 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 
-# Enable Cross-Origin Resource Sharing (CORS) for handling cross-origin requests
 CORS(app)
 
-# Define a route for handling GET requests at the root URL
 @app.route('/', methods=['GET'])
-def index():
-    # Return a simple JSON response for GET requests
+def index():    
     return jsonify({'message': 'Check the URL, also try POST method to /api/custom with a JSON body'})
 
+@app.route('/api/newuser', methods=['POST'])
+def newuser():
+    data = request.get_json()
+    #enter details of the user to mongodb
+    pass
+
+@app.route('/api/fetchuser', methods=['POST'])
+def fetchuser():
+    data = request.get_json()
+    #fetch details of the user from mongodb
+    pass
+
+@app.route('/api/edituser', methods=['POST'])
+def edituser():
+    data = request.get_json()
+    #edit details of the user to mongodb
+    pass
+ 
 # Define a route for handling POST requests at the '/api/custom' URL
-@app.route('/api/custom', methods=['POST'])
+@app.route('/api/fillme', methods=['POST'])
 def custom():
     # Retrieve JSON data from the request body
     data = request.get_json()
@@ -44,6 +59,7 @@ def custom():
 
     # Return the response dictionary as a JSON response
     return jsonify(response)
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
