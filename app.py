@@ -2,7 +2,8 @@
 from flask import Flask, jsonify, request
 from models.roberta import pipe
 from flask_cors import CORS
-
+from supa import insert_main
+import json
 app = Flask(__name__)
 
 CORS(app)
@@ -14,8 +15,11 @@ def index():
 @app.route('/api/newuser', methods=['POST'])
 def newuser():
     data = request.get_json()
-    #enter details of the user to mongodb
-    pass
+    dic=json.loads(data)
+    insert_main(dic)
+    #call selenium to do the stuff
+    #store it here
+    #insert to another table
 
 @app.route('/api/fetchuser', methods=['POST'])
 def fetchuser():
