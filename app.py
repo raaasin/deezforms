@@ -2,7 +2,7 @@
 from flask import Flask, jsonify, request
 from models.roberta import pipe
 from flask_cors import CORS
-from supa import insert_main, edit_data_main
+from supa import insert_main, edit_data_main, fetch_data
 import json
 app = Flask(__name__)
 
@@ -24,8 +24,8 @@ def newuser():
 @app.route('/api/fetchuser', methods=['POST'])
 def fetchuser():
     data = request.get_json()
-    #fetch details of the user from mongodb
-    pass
+    retrieval=fetch_data(data)
+    return retrieval
 
 @app.route('/api/edituser', methods=['POST'])
 def edituser():
