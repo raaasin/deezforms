@@ -12,3 +12,4 @@ def insert_main(data):
     table = "main"
     supabase.table(table).insert(data).execute()
     #{"emailid":"nisarvskp@gmail.com","linkedin":"bruh.com","github":"susu.com"}
+    

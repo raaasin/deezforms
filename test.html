@@ -14,10 +14,11 @@
         document.getElementById('getAPI').addEventListener('click', () => {
             // Define the JSON data
             const jsonData = {
+                "emailid":"lokesh@gmail.com","linkedin":"dde.com","github":"fefe.com"
 
             };
     
-            fetch('https://7781-2401-4900-1cb5-8c9b-e521-46a4-7bf7-77dc.ngrok-free.app/api/custom', {
+            fetch('http://172.20.10.4:5000/api/newuser', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json' // Set the content type to JSON

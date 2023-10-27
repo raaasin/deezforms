@@ -15,8 +15,8 @@ def index():
 @app.route('/api/newuser', methods=['POST'])
 def newuser():
     data = request.get_json()
-    dic=json.loads(data)
-    insert_main(dic)
+    print(data)
+    insert_main(data)
     #call selenium to do the stuff
     #store it here
     #insert to another table
