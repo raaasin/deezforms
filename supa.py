@@ -9,7 +9,7 @@ supabase: Client = create_client(url, key)
 def insert_main(data):
     table = "main"
     supabase.table(table).insert(data).execute()
-    #{"emailid":"nisarvskp@gmail.com","linkedin":"bruh.com","github":"susu.com"}
+    #{"emailid":"nisarvskp@gmail.com","linkedin":"xyz.com","github":"abc.com"}
 def edit_data_main(data):
     table="main"
     mail=data.get("emailid")
