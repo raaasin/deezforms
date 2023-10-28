@@ -31,18 +31,20 @@ def get_answers(data, text):
     for key in data:
         if key =="emailid":
             continue
-        # Get the question from the JSON data
-        label = key
+        toans=data.get(key)
+
 
         # Run the RoBERTa model with specific parameters
-        output = pipe.run(query=label, params={"Retriever": {"top_k": 10}, "Reader": {"top_k": 5}})
+        output = pipe.run(query=toans, params={"Retriever": {"top_k": 10}, "Reader": {"top_k": 5}})
         
         # Extract the answer from the model's output
-        out = output["answers"][0].answer
-        answer = out
+        try:
+            out = output["answers"][0].answer
+        except:
+            out = "Sorry, I could not find an answer to the question."
 
         # Store the answer for the question in the response dictionary
-        response[key] = answer
+        response[key] = out
 
     # Return the response dictionary as a JSON response
     print(response)

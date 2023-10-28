@@ -14,10 +14,10 @@
         document.getElementById('getAPI').addEventListener('click', () => {
             // Define the JSON data
             const jsonData = {
-                "emailid":"nisarvskp@gmail.com","name":"","why job?":""
+                '1': 'name', '2': 'mom name', '3': 'address', '4': 'why do you want this job', 'emailid': 'nisarvskp@gmail.com'
             };
     
-            fetch('http://172.20.10.4:5000/api/fillme', {
+            fetch('http://192.168.9.140:5000/api/fillme', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json' // Set the content type to JSON
