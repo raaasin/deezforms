@@ -38,6 +38,7 @@ def edituser():
 def custom():
     # Retrieve JSON data from the request body
     data = request.get_json()
+    print(data)
     scrapy=fetch_data_scraped(data)
     text=scrapy.get("gitscrape")+" "+scrapy.get("linkscrape")
     #return jsonify(text)

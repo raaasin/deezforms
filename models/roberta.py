@@ -29,6 +29,8 @@ def get_answers(data, text):
     pipe = ExtractiveQAPipeline(reader, retriever)
     response={}
     for key in data:
+        if key =="emailid":
+            continue
         # Get the question from the JSON data
         label = key
 
@@ -43,4 +45,5 @@ def get_answers(data, text):
         response[key] = answer
 
     # Return the response dictionary as a JSON response
+    print(response)
     return jsonify(response)
