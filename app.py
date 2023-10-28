@@ -2,7 +2,7 @@
 from flask import Flask, jsonify, request
 from models.roberta import *
 from flask_cors import CORS
-from supa import insert_main, edit_data_main, fetch_data,edit_data_scraped,insert_scraped,fetch_data_scraped
+from supa import insert_main, edit_data_main, fetch_data,edit_data_scraped,insert_scraped,fetch_data_scraped,does_user,new_user
 import json
 app = Flask(__name__)
 
@@ -50,7 +50,16 @@ def custom():
     return get_answers(data,text)
     # Initialize an empty dictionary to store responses
 
-
+@app.route('/api/doesuser', methods=['POST'])
+def doesuser():
+    data = request.get_json()
+    retrieval=does_user(data)
+    return jsonify(retrieval)
+@app.route('/api/new', methods=['POST'])
+def new():
+    data = request.get_json()
+    retrieval=new_user(data)
+    return jsonify(retrieval)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

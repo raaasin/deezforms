@@ -38,3 +38,29 @@ def fetch_data_scraped(data):
     r=r[0]
     res={"linkscrape":r.get("linkscrape"),"gitscrape":r.get("gitscrape")}
     return res
+def does_user(data):
+    table="userbase"
+    mail=data.get("emailid")
+    pas=data.get("password")
+    response = supabase.table(table).select("emailid,password").match({"emailid":mail,"password":pas}).execute()
+    r=response.data
+    if len(r)==0:
+        return False
+    else:
+        return True
+def new_user(data):
+    table="userbase"
+    #check if email already exists then return false
+    mail=data.get("emailid")
+    pas=data.get("password")
+    response = supabase.table(table).select("emailid").match({"emailid":mail}).execute()
+    r=response.data
+    if len(r)==0:
+        try:
+            supabase.table(table).insert(data).execute()
+            return "Registered successfully"
+        except:
+            return "something went wrong"
+    else:
+        return "user already exists"
+    
