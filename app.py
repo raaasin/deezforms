@@ -1,8 +1,8 @@
 
 from flask import Flask, jsonify, request
-from models.roberta import pipe
+from models.roberta import *
 from flask_cors import CORS
-from supa import insert_main, edit_data_main, fetch_data
+from supa import insert_main, edit_data_main, fetch_data,edit_data_scraped,insert_scraped,fetch_data_scraped
 import json
 app = Flask(__name__)
 
@@ -38,31 +38,17 @@ def edituser():
 def custom():
     # Retrieve JSON data from the request body
     data = request.get_json()
+    scrapy=fetch_data_scraped(data)
+    text=scrapy.get("gitscrape")+" "+scrapy.get("linkscrape")
+    #return jsonify(text)
 
     # Check if JSON data is provided; if not, return an error response
     if data is None:
         return jsonify(error='No JSON data provided'), 400
 
+    return get_answers(data,text)
     # Initialize an empty dictionary to store responses
-    response = {}
 
-    # Loop through the keys in the JSON data
-    for key in data:
-        # Get the question from the JSON data
-        label = key
-
-        # Run the RoBERTa model with specific parameters
-        output = pipe.run(query=label, params={"Retriever": {"top_k": 10}, "Reader": {"top_k": 5}})
-        
-        # Extract the answer from the model's output
-        out = output["answers"][0].answer
-        answer = out
-
-        # Store the answer for the question in the response dictionary
-        response[key] = answer
-
-    # Return the response dictionary as a JSON response
-    return jsonify(response)
 
 
 if __name__ == '__main__':
