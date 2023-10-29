@@ -14,10 +14,11 @@
         document.getElementById('getAPI').addEventListener('click', () => {
             // Define the JSON data
             const jsonData = {
-                "emailid":"nisar@gmail.com","password":"nisar"
+                "emailid":"thisisanexample@gmail.com",
+                "linkedin":"https://www.linkedin.com/in/raaasin/","github":"https://github.com/raaasin"
             };
-    
-            fetch('http://192.168.9.140:5000/api/new', {
+            
+            fetch('http://192.168.9.140:5000/api/newuser', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json' // Set the content type to JSON

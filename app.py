@@ -3,7 +3,7 @@ from flask import Flask, jsonify, request
 from models.roberta import *
 from flask_cors import CORS
 from supa import insert_main, edit_data_main, fetch_data,edit_data_scraped,insert_scraped,fetch_data_scraped,does_user,new_user
-import json
+import requests
 app = Flask(__name__)
 
 CORS(app)
@@ -14,12 +14,16 @@ def index():
 
 @app.route('/api/newuser', methods=['POST'])
 def newuser():
+  
     data = request.get_json()
-    print(data)
+    emailid=data.get("emailid")
+    #print(data)
     insert_main(data)
-    #call selenium to do the stuff
-    #store it here
-    #insert to another table
+    url = "http://192.168.9.220:5000/api/deezscrape" # Replace with your JSON data
+    response = requests.post(url, json=data)
+
+    return jsonify(response)
+       
 
 @app.route('/api/fetchuser', methods=['POST'])
 def fetchuser():
@@ -42,7 +46,7 @@ def custom():
     scrapy=fetch_data_scraped(data)
     text=scrapy.get("gitscrape")+" "+scrapy.get("linkscrape")
     #return jsonify(text)
-
+    
     # Check if JSON data is provided; if not, return an error response
     if data is None:
         return jsonify(error='No JSON data provided'), 400

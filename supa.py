@@ -23,11 +23,12 @@ def fetch_data(data):
     res={"linkedin":r.get("linkedin"),"github":r.get("github")}
     return res
 def insert_scraped(data):
-    table="scraped"
-    supabase.table(table).insert(data).execute()
+    table='main'
+    mail=data.get("emailid")
+    supabase.table(table).update({"linkscrape":data.get("linkscrape"),"gitscrape":data.get("gitscrape")}).match({"emailid":mail}).execute()
     #{"emailid":"nisarvskp","linkscrape":"xyz.com","gitscrape":"abc.com"}
 def edit_data_scraped(data):
-    table="scraped"
+    table="main"
     mail=data.get("emailid")
     supabase.table(table).update({"linkscrape":data.get("linkscrape"),"gitscrape":data.get("gitscrape")}).match({"emailid":mail}).execute()
 def fetch_data_scraped(data):
