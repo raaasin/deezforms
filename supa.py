@@ -32,7 +32,7 @@ def edit_data_scraped(data):
     mail=data.get("emailid")
     supabase.table(table).update({"linkscrape":data.get("linkscrape"),"gitscrape":data.get("gitscrape")}).match({"emailid":mail}).execute()
 def fetch_data_scraped(data):
-    table="scraped"
+    table="main"
     mail=data.get("emailid")
     response = supabase.table(table).select("linkscrape,gitscrape").match({"emailid":mail}).execute()
     r=response.data
