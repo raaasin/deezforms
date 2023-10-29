@@ -58,7 +58,7 @@ def new_user(data):
     if len(r)==0:
         try:
             supabase.table(table).insert(data).execute()
-            return "Registered successfully"
+            return True
         except:
             return "something went wrong"
     else:
